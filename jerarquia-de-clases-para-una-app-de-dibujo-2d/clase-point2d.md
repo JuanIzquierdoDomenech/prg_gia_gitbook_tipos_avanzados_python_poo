@@ -13,22 +13,42 @@ Dado que en Python no declaramos los atributos previamente como en C++, estos se
 
 ### Métodos
 
-<table><thead><tr><th width="172.34375">Perfil</th><th width="113.47265625">Visibilidad</th><th>Tipo</th><th>Descripción</th></tr></thead><tbody><tr><td><code>__init__(x, y)</code></td><td>-</td><td>Método especial (constructor) de instancia</td><td>Por defecto, las coordenadas <code>x</code> e <code>y</code> tomarán el valor 0. Deberá comprobar que los valores proporcionados son floats o se pueden convertir a float. De lo contrario, lanzará una excepción <code>ValueError</code>.</td></tr><tr><td><code>distance(a, b)</code></td><td>público</td><td>de clase</td><td></td></tr><tr><td><code>__eq__(other)</code></td><td>-</td><td></td><td></td></tr><tr><td><code>__ne__(other)</code></td><td>-</td><td></td><td></td></tr><tr><td><code>__hash__()</code></td><td>-</td><td></td><td></td></tr><tr><td><code>__getitem__(key)</code></td><td>-</td><td></td><td></td></tr><tr><td><code>__setitem__(key, value)</code></td><td>-</td><td></td><td></td></tr><tr><td><code>__str__()</code></td><td>-</td><td></td><td></td></tr><tr><td><code>__repr__()</code></td><td>-</td><td></td><td></td></tr></tbody></table>
+<table><thead><tr><th width="172.34375">Perfil</th><th width="121.4609375">Visibilidad</th><th width="176.90234375">Tipo</th><th>Descripción</th></tr></thead><tbody><tr><td><code>__init__(x, y)</code></td><td>-</td><td>Método (constructor) de instancia</td><td>Por defecto, las coordenadas <code>x</code> e <code>y</code> tomarán el valor 0. Deberá comprobar que los valores proporcionados son floats o se pueden convertir a float. De lo contrario, lanzará una excepción <code>ValueError</code>.</td></tr><tr><td><code>distance(a, b)</code></td><td>público</td><td>estático</td><td>Calcula la distancia euclidiana entre dos objetos <code>Point2D</code> <code>a</code> y <code>b</code>.</td></tr><tr><td><code>__eq__(other)</code></td><td>-</td><td>Método de instancia (sobrecarga de operadores)</td><td>Sobrecarga del comparador de igualdad <code>==</code>. Comprueba si dos puntos son lógicamente iguales. Devolverá <code>False</code> si <code>other</code> no es un <code>Point2D</code>.</td></tr><tr><td><code>__ne__(other)</code></td><td>-</td><td>Método de instancia (sobrecarga de operadores)</td><td>Sobrecarga del comparador de desigualdad <code>!=</code>. Comprueba si dos puntos son diferentes. Puedes delegar elegantemente en <code>__eq__</code>, pero asegúrate antes que se devuelva <code>False</code> si <code>other</code> no es un <code>Point2D</code>.</td></tr><tr><td><code>__hash__()</code></td><td>-</td><td>Método de instancia (sobrecarga de operadores)</td><td>Permite que el objeto sea <em>hashable</em>. Al implementar este método junto a <code>__eq__</code>, podemos introducir objetos <code>Point2D</code> en colecciones tipo conjunto (<code>set</code>) para, por ejemplo, eliminar duplicados fácilmente.</td></tr><tr><td><code>__getitem__(key)</code></td><td>-</td><td>Método de instancia (sobrecarga de operadores)</td><td>Permite obtener la coordenada <code>x</code> si el índice (<code>key</code>) devuelto es <code>0</code>, <code>"x"</code> o <code>"X"</code>, y la coordenada <code>y</code> si es <code>1</code>, <code>"y"</code> o <code>"Y"</code>. Para claves no válidas, lanza una excepción <code>KeyError</code> con un mensaje descriptivo.</td></tr><tr><td><code>__setitem__(key, value)</code></td><td>-</td><td>Método de instancia (sobrecarga de operadores)</td><td>Permite modificar la coordenada <code>x</code> o <code>y</code> según la misma lógica de índices especificada en <code>__getitem__</code>.</td></tr><tr><td><code>__str__()</code></td><td>-</td><td>Método de instancia (sobrecarga de operadores)</td><td>Sobrecarga de la conversión a cadena (análogo a <code>toString()</code>). Devolverá una representación legible del punto, por ejemplo: <code>"(1.5, -2.0)"</code>.</td></tr><tr><td><code>__repr__()</code></td><td>-</td><td>Método de instancia (sobrecarga de operadores)</td><td>Funcionalmente equivalente a <code>__str__</code>. Por tanto, delega (convencionalmente) en él.</td></tr></tbody></table>
 
-{% hint style="info" %}
+{% hint style="warning" %}
+Recuerda añadir el **parámetro** `self` en los métodos de instancia, así como la anotación `@staticmethod` sobre el método estático.&#x20;
+{% endhint %}
 
+{% hint style="info" icon="function" %}
+La distancia euclidiana dd entre dos puntos bidimensionales $$a=(a1,a2)$$ y $$b=(b1​,b2​)$$ se calcula como sigue: $$d(a, b) = \sqrt{(a_a - b_a)^2 + (a_2 - b_2)^2}$$​. Usa la función [`math.sqrt()`](https://docs.python.org/3/library/math.html#math.sqrt) del módulo integrado estándar `math`.
+{% endhint %}
+
+{% hint style="info" icon="eyes" %}
+Recuerda que para que un objeto de una clase propia pueda ser introducido en un `set` o usado como clave de un diccionario (`dict`), la clase **debe** implementar los métodos mágicos `__eq__` y `__hash__`.
+
+Cuando implementas `__hash__`, Python tiene una manera de generar una huella única de los objetos de la clase (como si fuera una huella dactilar). Se dice entonces que el objeto es _hasheable_, y por tanto, puedes comparar huellas dactilares entre objetos. Si dos objetos tienen la misma huella dactilar, entonces son repetidos. `set()` usa esta información para descartar objetos repetidos, mientras que `dict()` hace lo propio para las claves de los diccionarios.
+
+Para el `__hash__`, lo más común y seguro es devolver el _hash_ de una tupla que contenga sus atributos, usando la función incorporada [`hash()`](https://docs.python.org/es/3/library/functions.html#hash):
+
+```python
+return hash((self.x, self.y))
+```
 {% endhint %}
 
 {% hint style="info" %}
+Como hemos comentado, `__repr__` delegará en `__str__`. Por tanto, puedes usar:
 
-{% endhint %}
+```python
+return self.__str__()
+```
 
-{% hint style="info" %}
+o equivalentemente (y más elegantemente):
 
-{% endhint %}
+```python
+return str(self)
+```
 
-{% hint style="info" %}
-
+Reflexiona acerca de por qué esta última opción, más elegante, funciona.
 {% endhint %}
 
 ***
@@ -37,24 +57,22 @@ Dado que en Python no declaramos los atributos previamente como en C++, estos se
 
 Desde nuestro directorio de trabajo de la práctica (`p1`), crea con vim el módulo `point2d.py`. Es decir, deberás ejecutar:
 
-<a class="button secondary">Copiar</a>
-
-```
+```bash
 vim figures/point2d.py
 ```
 
 A continuación, dentro de vim, añade el siguiente contenido y completa la implementación:
 
-<a class="button secondary">Copiar</a>
-
-```
+```python
 import math
 
 class Point2D:
     # Completar!
 ```
 
-Recuerda ir comprobando la sintaxis de tu código ejecutando el módulo como un script `python3 -m figures.point2d`.
+{% hint style="info" %}
+Recuerda ir comprobando la sintaxis de tu código ejecutando el módulo como un script `python -m figures.point2d`.
+{% endhint %}
 
 ***
 
@@ -64,9 +82,11 @@ Vamos a probar la clase `Point2D` que acabamos de implementar. Para evitar que e
 
 Añade el siguiente código **(SIN MODIFICAR)** al final del fichero `point2d.py`:
 
+{% hint style="danger" %}
 **NO MODIFICAR ESTE BLOQUE DE CÓDIGO PRINCIPAL**
 
 Su salida se podrá usar el día del examen para evaluaros.
+{% endhint %}
 
 <details>
 
