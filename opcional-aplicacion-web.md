@@ -14,7 +14,7 @@ No debes realizar esta actividad ni probar este código si no han pasado satisfa
 
 Si has completado con éxito toda la jerarquía de figuras bidimensionales y la clase contenedora `Drawing`, puedes probar a integrarlo todo en una bonita y minimalista aplicación web interactiva.
 
-FOTO
+<figure><img src=".gitbook/assets/streamlit.png" alt=""><figcaption></figcaption></figure>
 
 Para ejecutar la aplicación, debes tener instalado el paquete [`streamlit`](https://streamlit.io/) en tu entorno. `streamlit` es una librería de Python que permite crear aplicaciones web interactivas de forma muy sencilla.
 
@@ -55,6 +55,8 @@ Ahora puedes instalar el paquete `streamlit` en tu entorno virtual ejecutando el
 pip install streamlit
 ```
 {% endcode %}
+
+<figure><img src=".gitbook/assets/Captura_de_pantalla_2026-07-10_a_las_13_08_10.png" alt=""><figcaption><p>Creación y activación del entorno virtual, e instalación de streamlit</p></figcaption></figure>
 
 Una vez instalada, crea con vim un fichero llamado `app-web.py` en el directorio raíz de la práctica (en el directorio principal `p1/`, es decir, un nivel por encima de `figures/`) copiando íntegramente el siguiente código.
 
