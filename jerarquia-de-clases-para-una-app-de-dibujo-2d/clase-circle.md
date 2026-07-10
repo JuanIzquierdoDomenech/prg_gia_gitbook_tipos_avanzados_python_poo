@@ -182,7 +182,7 @@ if __name__ == "__main__":
 
 </details>
 
-Finalmente, úbicate en la raíz del proyecto (`p1`) y ejecuta el módulo `circle` como si fuera un script usando la opción `-m` del intérprete de Python:
+Finalmente, ubícate en la raíz del proyecto (`p1`) y ejecuta el módulo `circle` como si fuera un script usando la opción `-m` del intérprete de Python:
 
 ```bash
 python -m figures.circle

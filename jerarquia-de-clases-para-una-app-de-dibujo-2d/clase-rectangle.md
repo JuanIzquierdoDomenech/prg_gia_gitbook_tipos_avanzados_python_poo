@@ -18,9 +18,181 @@ Por simplicidad, asumiremos que un rectángulo de vértices $$v_0, v_1, v_2, v_3
 
 ***
 
-## Actividad 8: Implementación de la clase Rectangle <a href="#actividad-8-implementacion-de-la-clase-rectangle" id="actividad-8-implementacion-de-la-clase-rectangle"></a>
+## Actividad 8: Implementación de la clase `Rectangle` <a href="#actividad-8-implementacion-de-la-clase-rectangle" id="actividad-8-implementacion-de-la-clase-rectangle"></a>
 
 Desde `figures`, crea com vim el fichero `rectangle.py` e implementala según la especificación anterior.
 
 ***
 
+## Actividad 9: Depuración de la clase `Rectangle`
+
+Guarda este test local en el módulo (recuerda probarlo lanzando `python -m figures.rectangle`):
+
+{% hint style="danger" icon="skull-crossbones" %}
+**NO MODIFICAR ESTE BLOQUE DE CÓDIGO PRINCIPAL**
+
+Su salida se podrá usar el día del examen para evaluaros.
+{% endhint %}
+
+<details>
+
+<summary>Código de test</summary>
+
+{% code title="" %}
+```python
+if __name__ == "__main__":
+    print("--- Pruebas del Constructor ---")
+    r1 = Rectangle()
+    print(f"[count: {Rectangle.count()}] r1 = {r1}")
+    v_personalizados = (Point2D(0.0, 2.0), Point2D(4.0, 2.0), Point2D(4.0, 0.0), Point2D(0.0, 0.0))
+    r2 = Rectangle("blue", v_personalizados)
+    print(f"[count: {Rectangle.count()}] r2 = {r2}")
+    
+    print()
+    print("--- Pruebas del Destructor ---")
+    del(r1) # invocamos destructor __del__
+    print(f"[count: {Rectangle.count()}] del(r1)")
+    
+    print()
+    print("--- Pruebas de Comparación ---")
+    r_eq_1 = Rectangle("red", v_personalizados)
+    r_eq_2 = Rectangle("red", v_personalizados)
+    r_diff = Rectangle("blue", v_personalizados)
+    
+    print(f"r_eq_1: {r_eq_1}")
+    print(f"r_eq_2: {r_eq_2}")
+    print(f"r_diff: {r_diff}")
+    
+    print(f"  > r_eq_1 == r_eq_2: {r_eq_1 == r_eq_2}")
+    print(f"  > r_eq_1 != r_eq_2: {r_eq_1 != r_eq_2}")
+    print(f"  > r_eq_1 == r_diff: {r_eq_1 == r_diff}")
+    print(f"  > r_eq_1 != r_diff: {r_eq_1 != r_diff}")
+
+    print()
+    print("--- Pruebas de Getters, Setters y Métodos ---")
+    print(f"r2 antes:\n  > {r2}")
+    r2.color = "red"
+    # r2 lo trasladamos artificialmente sumando 1 a todo
+    v_mas_uno = (Point2D(1.0, 3.0), Point2D(5.0, 3.0), Point2D(5.0, 1.0), Point2D(1.0, 1.0))
+    r2.vertices = v_mas_uno
+    print(f"r2 modificado:\n  > {r2}")
+    print(f"Valores leidos:")
+    print(f"  > color={r2.color}")
+    print(f"  > vertices={r2.vertices}")
+    print(f"  > area={r2.area()}; perimeter={r2.perimeter()}")
+
+    print()
+    print("--- Pruebas de Indexación e Iteración ---")
+    print(f"Acceso a r2 por get_vertex(0): {r2.get_vertex(0)}")
+    print(f"Acceso a r2 por r2[1] (__getitem__): {r2[1]}")
+    
+    print("Iterando vértices de r2:")
+    for i, v in enumerate(r2):
+        print(f"  Iteración {i}: {v}")
+
+    print()
+    print("--- Pruebas de Excepciones ---")
+    print("Intentando acceder a un índice de vértice inválido (r2[4])...")
+    try:
+        r2[4]
+    except IndexError as e:
+        print(f"  > Se capturó excepción IndexError correctamente: {e}")
+
+    print("Intentando instanciar Rectangle con vértices que no forman rectángulo...")
+    try:
+        v_invalidos = (Point2D(0,0), Point2D(0,0), Point2D(10,5), Point2D(90,90))
+        Rectangle("red", v_invalidos)
+    except InvalidFigureError as e:
+        print(f"  > Se capturó excepción InvalidFigureError correctamente: {e}")
+
+    print("Intentando instanciar Rectangle con una lista en lugar de tupla...")
+    try:
+        v_lista = [Point2D(0,2), Point2D(4,2), Point2D(4,0), Point2D(0,0)]
+        Rectangle("red", v_lista)
+    except InvalidFigureError as e:
+        print(f"  > Se capturó excepción InvalidFigureError correctamente: {e}")
+
+    print()
+    print("--- Pruebas con Conjuntos (Set) ---")
+    lista_rectangulos = [Rectangle("red", v_personalizados),
+                         Rectangle("blue"),
+                         Rectangle("red", v_personalizados)]
+    print(f"Lista original con {len(lista_rectangulos)} rectángulos")
+    conjunto_rectangulos = set(lista_rectangulos)
+    print(f"Conjunto (sin duplicados) con {len(conjunto_rectangulos)} rectángulos")
+    
+    print()
+    print(f"Figuras vivas (count): {Rectangle.count()}")
+```
+{% endcode %}
+
+</details>
+
+Finalmente, ubícate en la raíz del proyecto (`p1`) y ejecuta el módulo `rectangle` como si fuera un script usando la opción `-m` del intérprete de Python:
+
+```bash
+python -m figures.rectangle
+```
+
+Deberías de generar una salida muy similar a esta:
+
+<details>
+
+<summary>Salida esperada</summary>
+
+{% code title="" %}
+```python
+--- Pruebas del Constructor ---
+[count: 1] r1 = Rectangle(color: red, vertices: ((-1.0, 0.5), (1.0, 0.5), (1.0, -0.5), (-1.0, -0.5)))
+[count: 2] r2 = Rectangle(color: blue, vertices: ((0.0, 2.0), (4.0, 2.0), (4.0, 0.0), (0.0, 0.0)))
+
+--- Pruebas del Destructor ---
+[count: 1] del(r1)
+
+--- Pruebas de Comparación ---
+r_eq_1: Rectangle(color: red, vertices: ((0.0, 2.0), (4.0, 2.0), (4.0, 0.0), (0.0, 0.0)))
+r_eq_2: Rectangle(color: red, vertices: ((0.0, 2.0), (4.0, 2.0), (4.0, 0.0), (0.0, 0.0)))
+r_diff: Rectangle(color: blue, vertices: ((0.0, 2.0), (4.0, 2.0), (4.0, 0.0), (0.0, 0.0)))
+  > r_eq_1 == r_eq_2: True
+  > r_eq_1 != r_eq_2: False
+  > r_eq_1 == r_diff: False
+  > r_eq_1 != r_diff: True
+
+--- Pruebas de Getters, Setters y Métodos ---
+r2 antes:
+  > Rectangle(color: blue, vertices: ((0.0, 2.0), (4.0, 2.0), (4.0, 0.0), (0.0, 0.0)))
+r2 modificado:
+  > Rectangle(color: red, vertices: ((1.0, 3.0), (5.0, 3.0), (5.0, 1.0), (1.0, 1.0)))
+Valores leidos:
+  > color=red
+  > vertices=((1.0, 3.0), (5.0, 3.0), (5.0, 1.0), (1.0, 1.0))
+  > area=8.0; perimeter=12.0
+
+--- Pruebas de Indexación e Iteración ---
+Acceso a r2 por get_vertex(0): (1.0, 3.0)
+Acceso a r2 por r2[1] (__getitem__): (5.0, 3.0)
+Iterando vértices de r2:
+  Iteración 0: (1.0, 3.0)
+  Iteración 1: (5.0, 3.0)
+  Iteración 2: (5.0, 1.0)
+  Iteración 3: (1.0, 1.0)
+
+--- Pruebas de Excepciones ---
+Intentando acceder a un índice de vértice inválido (r2[4])...
+  > Se capturó excepción IndexError correctamente: Índice de vértice fuera de rango.
+Intentando instanciar Rectangle con vértices que no forman rectángulo...
+  > Se capturó excepción InvalidFigureError correctamente: Los vértices proporcionados no conforman un rectángulo válido.
+Intentando instanciar Rectangle con una lista en lugar de tupla...
+  > Se capturó excepción InvalidFigureError correctamente: Los vértices proporcionados no conforman un rectángulo válido.
+
+--- Pruebas con Conjuntos (Set) ---
+Lista original con 3 rectángulos
+Conjunto (sin duplicados) con 2 rectángulos
+
+Figuras vivas (count): 7
+```
+{% endcode %}
+
+</details>
+
+Si la semántica de tu salida es diferente a la esperada, revisa tu implementación.

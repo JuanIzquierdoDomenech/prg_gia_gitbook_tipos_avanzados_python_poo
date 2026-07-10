@@ -84,7 +84,7 @@ Vamos a probar la clase `Point2D` que acabamos de implementar. Para evitar que e
 
 Añade el siguiente código **(SIN MODIFICAR)** al final del fichero `point2d.py`:
 
-{% hint style="danger" %}
+{% hint style="danger" icon="skull-crossbones" %}
 **NO MODIFICAR ESTE BLOQUE DE CÓDIGO PRINCIPAL**
 
 Su salida se podrá usar el día del examen para evaluaros.
