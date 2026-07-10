@@ -1,5 +1,7 @@
 # Clase Point2D
 
+## Descripción de la clase
+
 El tipo de datos `Point2D`, que representa un punto bidimensional en el espacio cartesiano, estará definido por una clase en Python de igual nombre.
 
 ### Atributos <a href="#atributos" id="atributos"></a>
