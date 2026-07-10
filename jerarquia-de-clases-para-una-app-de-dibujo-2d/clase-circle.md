@@ -8,7 +8,7 @@ El tipo de datos `Circle`, que representa un círculo en un espacio bidimensiona
 
 <table><thead><tr><th width="110.1875">Nombre</th><th width="136.51953125">Tipo</th><th width="143.91796875">Visibilidad</th><th>Descripción</th></tr></thead><tbody><tr><td><code>center</code></td><td>de instancia</td><td>privado</td><td>Centro del círculo (tipo <code>Point2D</code>).</td></tr><tr><td><code>radius</code></td><td>de instancia</td><td>privado</td><td>Radio del círculo (tipo <code>float</code>). Debe ser mayor o igual que 0.</td></tr></tbody></table>
 
-Métodos
+### Métodos
 
 **Además de los métodos abstractos heredados de la interfaz** [**`Shape`**](clase-abstracta-shape.md) que deberás implementar por "contrato" (`area()`, `perimeter()`, etc.), esta clase deberá implementar los siguientes métodos:
 
