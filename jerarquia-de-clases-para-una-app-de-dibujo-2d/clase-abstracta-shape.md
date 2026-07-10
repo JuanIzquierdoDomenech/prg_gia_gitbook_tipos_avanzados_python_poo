@@ -34,7 +34,7 @@ La implementación del método concreto `__ne__(other)` delegará en el método 
 
 ***
 
-## Actividad 5: Implementación de la clase Shape <a href="#actividad-5-implementacion-de-la-clase-shape" id="actividad-5-implementacion-de-la-clase-shape"></a>
+## Actividad 5: Implementación de la clase `Shape` <a href="#actividad-5-implementacion-de-la-clase-shape" id="actividad-5-implementacion-de-la-clase-shape"></a>
 
 Desde el paquete `figures`, crea con vim el módulo `shape.py`. En Python, para dotar de comportamiento abstracto a una clase, debemos heredar de `ABC` e importar el decorador `@abstractmethod`. Además, necesitaremos importar la excepción personalizada que definimos en la página [Excepciones definidas por el usuario](excepciones-definidas-por-el-usuario.md).
 

@@ -55,7 +55,7 @@ Reflexiona acerca de por qué esta última opción, más elegante, funciona.
 
 ***
 
-## Actividad 3: Implementación de la clase Point2D <a href="#actividad-3-implementacion-de-la-clase-point2d" id="actividad-3-implementacion-de-la-clase-point2d"></a>
+## Actividad 3: Implementación de la clase `Point2D` <a href="#actividad-3-implementacion-de-la-clase-point2d" id="actividad-3-implementacion-de-la-clase-point2d"></a>
 
 Desde nuestro directorio de trabajo de la práctica (`p1`), crea con vim el módulo `point2d.py`. Es decir, deberás ejecutar:
 
@@ -78,7 +78,7 @@ Recuerda ir comprobando la sintaxis de tu código ejecutando el módulo como un 
 
 ***
 
-## Actividad 4: Depuración de la clase Point2D <a href="#actividad-4-depuracion-de-la-clase-point2d" id="actividad-4-depuracion-de-la-clase-point2d"></a>
+## Actividad 4: Depuración de la clase `Point2D` <a href="#actividad-4-depuracion-de-la-clase-point2d" id="actividad-4-depuracion-de-la-clase-point2d"></a>
 
 Vamos a probar la clase `Point2D` que acabamos de implementar. Para evitar que el código de prueba se ejecute cuando importemos esta clase desde otros ficheros de la aplicación, envolveremos las pruebas en el bloque estandarizado `if __name__ == "__main__"`.
 
