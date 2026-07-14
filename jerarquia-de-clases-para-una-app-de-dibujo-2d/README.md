@@ -1,3 +1,24 @@
+---
+layout:
+  width: wide
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+  metadata:
+    visible: true
+  tags:
+    visible: true
+  actions:
+    visible: true
+---
+
 # Jerarquía de clases para una app de dibujo 2D
 
 En esta práctica diseñaremos e implementaremos una **jerarquía de clases que modele las entidades de una aplicación de dibujo 2D**. La aplicación gestionará un grupo de figuras haciendo uso extensivo de los conceptos de Programación Orientada a Objetos en Python. Para almacenar las colecciones de figuras (o atributos multivariados como los vértices), haremos uso de estructuras de datos integradas de Python, como **listas** o **tuplas**. También exploraremos el uso de **conjuntos (`set`)** para optimizar ciertas operaciones e introducir iteradores personalizados.

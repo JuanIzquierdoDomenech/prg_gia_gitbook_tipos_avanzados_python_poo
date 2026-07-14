@@ -1,3 +1,24 @@
+---
+layout:
+  width: wide
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+  metadata:
+    visible: true
+  tags:
+    visible: true
+  actions:
+    visible: true
+---
+
 # Preparación del entorno
 
 ## Actividad 1. Crea el directorio de la práctica y inicializa el paquete `figure` <a href="#actividad-1.-crea-el-directorio-de-la-practica-y-inicializa-el-paquete-figure" id="actividad-1.-crea-el-directorio-de-la-practica-y-inicializa-el-paquete-figure"></a>

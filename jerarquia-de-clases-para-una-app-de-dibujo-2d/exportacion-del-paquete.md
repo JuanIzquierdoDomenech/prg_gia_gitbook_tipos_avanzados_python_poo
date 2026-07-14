@@ -1,3 +1,24 @@
+---
+layout:
+  width: wide
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+  metadata:
+    visible: true
+  tags:
+    visible: true
+  actions:
+    visible: true
+---
+
 # Exportación del paquete
 
 El objetivo de un paquete de Python es encapsular múltiples módulos relacionados y ofrecer un punto de entrada unificado para facilitar su uso a los programadores clientes. Podemos conseguirlo definiendo un fichero `__init__.py` en la raíz del propio paquete. Este fichero se ejecuta automáticamente cuando alguien importa el paquete.

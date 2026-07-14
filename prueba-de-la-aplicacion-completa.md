@@ -1,3 +1,24 @@
+---
+layout:
+  width: wide
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+  metadata:
+    visible: true
+  tags:
+    visible: true
+  actions:
+    visible: true
+---
+
 # Prueba de la aplicación completa
 
 A diferencia de las demás clases que hemos desarrollado encapsuladas en el paquete `figures`, crearemos este fichero de pruebas **en el directorio principal `p1/`**, es decir, un nivel **por encima** de `figures/`. Este script actuará como el punto de entrada de nuestra app.
